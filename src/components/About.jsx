@@ -57,8 +57,33 @@ const About = () => {
                     </h2>
 
                     <p className="text-gray-600 text-lg leading-relaxed">
-                        At Bella Novera Spa & Saloon, we believe that beauty is an art form, and every individual is a unique canvas. Our mission is to enhance your natural beauty through personalized care, expert techniques, and premium products. With a team of passionate professionals, we are dedicated to providing an unparalleled spa and salon experience that leaves you feeling rejuvenated, confident, and radiant.
+                        At Bella Novera Spa & Saloon, we believe that beauty is an art form, and every individual is a unique canvas. With a team of passionate professionals, we are dedicated to providing an unparalleled spa and salon experience that leaves you feeling rejuvenated, confident, and radiant.
                     </p>
+
+                    {/* Features Section */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {features.map((feature, index) => (
+                            <div key={index} className="p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group">
+                                <div className="flex items-center space-x-4">
+                                    <div className="p-3 bg-rose-50 rounded-xl group-hover:bg-rose-100 transition-colors">
+                                        <span className='text-rose-500'>
+                                            {feature.icon}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-gray-800">
+                                            {feature.title}
+                                        </h3>
+                                        <p className="text-gray-600 text-sm">
+                                            {feature.desc}
+                                        </p>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                        ))} 
+                        </div>
                 </div>
             </div>
         </div>
