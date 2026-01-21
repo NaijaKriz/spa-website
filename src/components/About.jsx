@@ -52,6 +52,9 @@ const About = () => {
                             </span>
                         </div>
                     </div>
+                    <h3 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-rose-500 bg-clip-text text-transparent">
+                        Redefinig Beauty & Elegance Standards
+                    </h3>
                 </div>
             </div>
         </div>
