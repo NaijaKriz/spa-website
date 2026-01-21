@@ -20,8 +20,8 @@ const Banner = () => {
             playsInline
             />
             {/* OPTIONAL EXTRA OVERLAY (for better text contrast) */}
-  <div className="absolute inset-0 bg-black/50 z-10"></div>
-  <div className="absolute inset-0 bg-black/50 z-10"></div>
+  <div className="absolute inset-0 bg-black/30 z-10"></div>
+  <div className="absolute inset-0 bg-black/30 z-10"></div>
 
   {/* CONTENT */}
   <div className="max-w-6xl text-white z-15 relative px-4">
