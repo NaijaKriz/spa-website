@@ -43,6 +43,16 @@ const About = () => {
                             </div>
                         </div>
                 </div>
+                <div className="space-y-8">
+                    <div className="inline-block">
+                        <div className="flex items-center space-x-3 bg-rose-100 px-4 py-2 rounded-full">
+                            <FiAward className="text-rose-400"/>
+                            <span className="text-sm font-semibold text-rose-600">
+                                Award winning Spa & Saloon
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
