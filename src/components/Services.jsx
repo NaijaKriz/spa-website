@@ -18,6 +18,7 @@ import Manicure from "../assets/MP.jpg";
 import LaserHairRemoval from "../assets/LHR.jpg";
 import Microblading from "../assets/MB.jpg";
 import BodyScrub from "../assets/BSW.jpg";
+import { SiPanasonic } from "react-icons/si";
 
 
 const Services = () => {
@@ -124,7 +125,23 @@ const Services = () => {
                                     p-2 rounded-full">
                                         {service.icon}
                                     </div>
-                                    <img src={service.image} alt="" />
+                                    <img src={service.image} alt={service.title}  className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" load='lazy'/>
+                                    <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                    {/* Title and Price */}
+                                    <span className="bg-amber-500/90 text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg">
+                                        {service.price}
+                                    </span>
+                                    </div>
+                            </div>
+                            <div className="p-6">
+                                <div className="gap-2 flex flex-wrap mb-3">
+                                    {service.tags.map((tag, index) => (
+                                        <span key={index} className="bg-amber-50 text-amber-700 px-3 py-2 rounded-full text-sm font-medium border border-amber-200
+                                        hover:bg-amber-100 transition-colors">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                     </div>
                 ))}
