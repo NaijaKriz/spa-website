@@ -110,9 +110,24 @@ const Services = () => {
                 <h2 className="text-3xl md:text-5xl font-[dancing-script] mb-4 bg-gradient-to-r from-[#f7e7ce] to-[#ffefb4] bg-clip-text">
                     Our Beauty Spa & Salon Services
                 </h2>
-                <p>
+                <p className="text-amber-800 max-w-2xl mx-auto text-xl font-medium font-[dancing-script]">
                     Indulge in our curated selection of premium spa and salon services designed to rejuvenate your body and mind.
                 </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
+                {(showAll ? services : services.slice(0, 6)).map((service) => (
+                    <div key={service.id} className="group relative bg-[#fff9e6] rounded-2xl shadow-xl 
+                        border-2 border-amber-100 overflow-hidden transition-all duration-300 hover:border-amber-200
+                        hover:shadow-2xl hover:translate-y-2">
+                            <div className="relative h-72 overflow-hidden">
+                                <div className="absolute top-4 right-4 z-10 bg-white/10 backdrop-blur-sm
+                                    p-2 rounded-full">
+                                        {service.icon}
+                                    </div>
+                                    <img src={service.image} alt="" />
+                            </div>
+                    </div>
+                ))}
             </div>
         </div>
 
