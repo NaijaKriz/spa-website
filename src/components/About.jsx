@@ -52,9 +52,13 @@ const About = () => {
                             </span>
                         </div>
                     </div>
-                    <h3 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-rose-500 bg-clip-text text-transparent">
+                    <h2 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-rose-500 bg-clip-text text-transparent">
                         Redefinig Beauty & Elegance Standards
-                    </h3>
+                    </h2>
+
+                    <p className="text-gray-600 text-lg leading-relaxed">
+                        At Bella Novera Spa & Saloon, we believe that beauty is an art form, and every individual is a unique canvas. Our mission is to enhance your natural beauty through personalized care, expert techniques, and premium products. With a team of passionate professionals, we are dedicated to providing an unparalleled spa and salon experience that leaves you feeling rejuvenated, confident, and radiant.
+                    </p>
                 </div>
             </div>
         </div>
