@@ -142,6 +142,10 @@ const Services = () => {
                                         </span>
                                     ))}
                                 </div>
+                                <h3 className="text-2xl font-[dancing-script] mb-2 text-amber-800">
+                                    {service.title}
+                                </h3>
+                                <p className="text-amber-500 leading-relaxed font-medium">{service.description}</p>
                             </div>
                     </div>
                 ))}
