@@ -104,6 +104,14 @@ const Services = () => {
             icon: <FaSmile className="w-8 h-8 text-amber-600" />,
         },
     ];
+
+    const toggleServices = () => {
+        setShowAll(!showAll);
+        if(!showAll){
+            scroll.scrollMore(500, {smooth: true});
+        } 
+    }
+
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-[#fceedd] to-[#f9eab8]">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -149,6 +157,19 @@ const Services = () => {
                             </div>
                     </div>
                 ))}
+            </div>
+
+            {/* Toggle Button */}
+            <div className="flex justify-center mt-12">
+                <button
+                    onClick={toggleServices}
+                    className="px-8 py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold hover:opacity-90
+                    rounded-full shadow-lg hover:from-amber-600 hover:to-amber-700 transition-all duration-300 items-center gap-2 flex 
+                    transform hover:scale-105"
+                >
+                    {showAll ? "Show Less" : "Show More"}
+                    <GiFlowerTwirl className="w-5 h-5 animate-pulse" />
+                </button>
             </div>
         </div>
 
