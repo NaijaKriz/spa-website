@@ -4,7 +4,7 @@ import { FiCheck } from "react-icons/fi";
 
 const Contact = () => {
 
-    const [error,setErrors] = useState({});
+    const [error,setError] = useState({});
     const [isSubmitting,setIsSubmitting] = useState(false);
     const [name,setName] = useState('');
     const [phone,setPhone] = useState('');
@@ -29,7 +29,7 @@ const Contact = () => {
         const errors = {};
         if (!name.trim()) errors.name = 'Name is required.';
         if (!phone.trim()) errors.phone = 'Phone number is required.';
-        else if (!/^\d{10}$/.test(phone)) errors.phone = 'Phone number must be exactly 10 digits.';
+        else if (!/^\d{11}$/.test(phone)) errors.phone = 'Phone number must be exactly 11 digits.';
         if (selectedServices.length === 0) errors.services = 'Please select at least one service.';
         if (!date) errors.date = 'Date is required.';
         if (!time) errors.time = 'Time is required.';
@@ -48,10 +48,10 @@ const Contact = () => {
     e.preventDefault();
     const validationErrors = validateForm();
     if(Object.keys(validationErrors).length){
-        setErrors(validationErrors);
+        setError(validationErrors);
         return;
     }
-    setErrors({});
+    setError({});
     setIsSubmitting(true);
 
     const message = `Name: ${name}%0APhone: ${phone}%0AServices: ${selectedServices.join(', ')}%0ADate: ${date}%0ATime: ${time}`;
@@ -90,7 +90,7 @@ const Contact = () => {
                         <input type="text" placeholder='Your Full Name' value={name} 
                         onChange={(e)=>setName(e.target.value)}
                         className='w-full pl-12 rounded-xl pr-4 py-4 border-2 border-yellow-100 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200
-                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium' autoFocus/>
+                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium'/>
                         {error.name && <p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
                             <FiInfo className="inline" />
                             {error.name}
@@ -152,7 +152,7 @@ const Contact = () => {
                         <input type="date"  value={date} 
                         onChange={(e)=>setDate(e.target.value)}
                         className='w-full pl-12 rounded-xl pr-4 py-4 border-2 border-yellow-100 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200
-                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium' autoFocus/>
+                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium'/>
                         {error.date && <p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
                             {error.date}
                         </p>}
