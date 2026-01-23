@@ -149,10 +149,10 @@ const Contact = () => {
                     {/* DATE */}
                     <div className="relative group">
                         <FiCalendar className='absolute left-4 top-4 text-yellow-400 text-xl'/>
-                        <input type="date" value={date} 
+                        <input type="date"  value={date} 
                         onChange={(e)=>setDate(e.target.value)}
                         className='w-full pl-12 rounded-xl pr-4 py-4 border-2 border-yellow-100 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200
-                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium' />
+                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium' autoFocus/>
                         {error.date && <p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
                             {error.date}
                         </p>}
