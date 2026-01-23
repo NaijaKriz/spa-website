@@ -95,8 +95,8 @@ const Navbar = () => {
       {/*Mobile Menu */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-pink-200/95 backdrop-blur-lg">
-            <button className="absolute top-4 right-4 text-gray-800 hover:text-pink-700 transition-colors duration-300 p-2">
-                <FiX size={28} />
+            <button  className="absolute top-4 right-4 text-gray-800 hover:text-pink-700 transition-colors duration-300 p-2">
+                <FiX onClick={() =>setIsMenuOpen(false)} size={28} />
             </button>
             <div className="bg-pink-100/90 border border-pink-300/20 rounded-xl shadow-2xl p-8 space-y-8 w-11/12 max-w-sm">
                 <Link to='home' spy={true} smooth={true}
