@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { FiInfo, FiPhone, FiUser, FiX } from 'react-icons/fi';
+import { FiCalendar, FiClock, FiInfo, FiPhone, FiUser, FiX } from 'react-icons/fi';
 import { FiCheck } from "react-icons/fi";
 
 const Contact = () => {
@@ -53,7 +53,22 @@ const Contact = () => {
     }
     setErrors({});
     setIsSubmitting(true);
- });
+
+    const message = `Name: ${name}%0APhone: ${phone}%0AServices: ${selectedServices.join(', ')}%0ADate: ${date}%0ATime: ${time}`;
+
+    setTimeout(() => {
+        window.open(`https://wa.me/+2348149208959?text=${message}`, '_blank');
+        setName('');
+        setPhone('');
+        setSelectedServices([]);
+        setDate('');
+        setTime('');
+        setIsSubmitting(false);
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    },1000)
+ },[name, phone, selectedServices, date, time, validateForm]);
 
   return (
    <section id="contact" className='py-20 bg-yellow-50 min-h-screen px-4 sm:px-6 lg:px-8'>
@@ -76,10 +91,10 @@ const Contact = () => {
                         onChange={(e)=>setName(e.target.value)}
                         className='w-full pl-12 rounded-xl pr-4 py-4 border-2 border-yellow-100 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200
                                 transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium' autoFocus/>
-                        {error.name && (<p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
+                        {error.name && <p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
                             <FiInfo className="inline" />
                             {error.name}
-                        </p>)}
+                        </p>}
                     </div>
 
                     <div className="relative group">
@@ -87,11 +102,10 @@ const Contact = () => {
                         <input type="tel" placeholder='Your Phone Number' value={phone} 
                         onChange={(e)=>setPhone(e.target.value.replace(/\D/g,'').slice(0,11))}
                         className='w-full pl-12 rounded-xl pr-4 py-4 border-2 border-yellow-100 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200
-                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium' autoFocus/>
-                        {error.phone && (<p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
-                            <FiInfo className="inline" />
+                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium'/>
+                        {error.phone && <p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
                             {error.phone}
-                        </p>)}
+                        </p>}
                     </div>
                     <div className="md:col-span-2">
                         <label htmlFor="" className="block text-yellow-700 text-lg font-medium mb-3 sm:mb-4">
@@ -132,7 +146,34 @@ const Contact = () => {
                             {error.services}
                         </p>}
                     </div>
+                    {/* DATE */}
+                    <div className="relative group">
+                        <FiCalendar className='absolute left-4 top-4 text-yellow-400 text-xl'/>
+                        <input type="date" value={date} 
+                        onChange={(e)=>setDate(e.target.value)}
+                        className='w-full pl-12 rounded-xl pr-4 py-4 border-2 border-yellow-100 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200
+                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium' />
+                        {error.date && <p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
+                            {error.date}
+                        </p>}
+                    </div>
+                    <div className="relative group">
+                        <FiClock className='absolute left-4 top-4 text-yellow-400 text-xl'/>
+                        <input type="time" value={time} 
+                        onChange={(e)=>setTime(e.target.value)}
+                        className='w-full pl-12 rounded-xl pr-4 py-4 border-2 border-yellow-100 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200
+                                transition-all duration-300 placeholder-yellow-300 text-yellow-700 font-medium' />
+                        {error.time && <p className="text-red-400 text-sm mt-1 ml-2 flex items-center gap-1">
+                            {error.time}
+                        </p>}
+                    </div>
                 </div>
+                {/* SUBMIT BUTTON */}
+                    <button type="submit" disabled={isSubmitting} className={`w-full sm:mt-8 bg-gradient-to-r from-yellow-400 to-yellow-600
+                    hover:from-yellow-500 hover:to-yellow-600 text-white font-bold py-4 px-4 
+                    rounded-xl transition-all duration-300 mt-6 cursor-pointer ${isSubmitting ? 'opacity-80 cursor-not-allowed' : ''}`}>
+                    {isSubmitting ? 'scheduling Your Appointment...' : 'Book Appointment'}
+                </button>
             </form>
         </div>
    </section>
