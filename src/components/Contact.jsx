@@ -45,30 +45,30 @@ const Contact = () => {
 
 
  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    const validationErrors = validateForm();
-    if(Object.keys(validationErrors).length){
-        setError(validationErrors);
-        return;
-    }
-    setError({});
-    setIsSubmitting(true);
+  e.preventDefault();
 
-    const message = `Name: ${name}%0APhone: ${phone}%0AServices: ${selectedServices.join(', ')}%0ADate: ${date}%0ATime: ${time}`;
+  const validationErrors = validateForm();
+  if (Object.keys(validationErrors).length) {
+    setError(validationErrors);
+    return;
+  }
 
-    setTimeout(() => {
-        window.open(`https://wa.me/+2348149208959?text=${message}`, '_blank');
-        setName('');
-        setPhone('');
-        setSelectedServices([]);
-        setDate('');
-        setTime('');
-        setIsSubmitting(false);
-        setTimeout(() => {
-            window.location.reload();
-        }, 3000);
-    },1000)
- },[name, phone, selectedServices, date, time, validateForm]);
+  setError({});
+  setIsSubmitting(true);
+
+  const message = encodeURIComponent(
+    `Name: ${name}
+Phone: ${phone}
+Services: ${selectedServices.join(', ')}
+Date: ${date}
+Time: ${time}`
+  );
+
+  // ✅ Mobile-safe WhatsApp redirect
+  window.location.href = `https://wa.me/2348149208959?text=${message}`;
+
+}, [name, phone, selectedServices, date, time, validateForm]);
+
 
   return (
    <section id="contact" className='py-20 bg-yellow-50 min-h-screen px-4 sm:px-6 lg:px-8'>
